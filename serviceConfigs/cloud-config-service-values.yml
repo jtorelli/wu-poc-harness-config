@@ -30,7 +30,9 @@ resources:
 
 env:
   config:
-
+    SPRING_CONFIG_GIT_USERNAME: ${serviceVariable.SPRING_CONFIG_GIT_USERNAME}
+    SPRING_CONFIG_GIT_URL: ${serviceVariable.SPRING_CONFIG_GIT_URL}
   secrets:
+    SPRING_CONFIG_GIT_PASSWORD: ${serviceVariable.SPRING_CONFIG_GIT_PASSWORD}
   
 

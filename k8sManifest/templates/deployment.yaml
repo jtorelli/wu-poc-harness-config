@@ -57,17 +57,17 @@ spec:
       - name: {{.Values.name}}
         image: {{.Values.image}}
         imagePullPolicy: Always
-        {{- if or .Values.env.config .Values.env.secrets}}
-        livenessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.serviceTargetPort }}
-        readinessProbe:
-          httpGet:
-            path: /
-            port: {{ .Values.serviceTargetPort }}
+#        livenessProbe:
+#          httpGet:
+#            path: /
+#            port: {{ .Values.serviceTargetPort }}
+#        readinessProbe:
+#          httpGet:
+#            path: /
+#            port: {{ .Values.serviceTargetPort }}
         resources:
-        {{- toYaml .Values.resources | indent 12 }}
+        {{- toYaml .Values.resources}}
+        {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
         - configMapRef:
