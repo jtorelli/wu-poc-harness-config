@@ -1,4 +1,4 @@
-name: apt-gateway
+name: api-gateway
 replicas: 1
 
 image: ${artifact.metadata.image}
