@@ -31,6 +31,8 @@ resources:
 env:
   config:
      CONFIG_CLOUD_SERVICE_URL: ${serviceVariable.CONFIG_CLOUD_SERVICE_URL}
+     CONFIG_CLOUD_GIT_BRANCH: ${serviceVariable.CONFIG_CLOUD_GIT_BRANCH}
+     CONFIG_CLOUD_ACTIVE_PROFILE: ${serviceVariable.CONFIG_CLOUD_ACTIVE_PROFILE}
   secrets:
   
 
