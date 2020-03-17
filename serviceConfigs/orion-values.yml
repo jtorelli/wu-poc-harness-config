@@ -30,7 +30,7 @@ resources:
 
 env:
   config:
-
+     CONFIG_CLOUD_SERVICE_URL: ${serviceVariable.CONFIG_CLOUD_SERVICE_URL}
   secrets:
   
 
