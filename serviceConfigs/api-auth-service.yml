@@ -1,4 +1,4 @@
-name: apt-auth-service
+name: api-auth-service
 replicas: 1
 
 image: ${artifact.metadata.image}
@@ -17,8 +17,9 @@ serviceType: NodePort
 servicePort: 8080
 serviceTargetPort: 8080
 
-initialLivenessProbeDelay: 5
-
+probes:
+  path: /
+  initialLivenessProbeDelay: 5
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little

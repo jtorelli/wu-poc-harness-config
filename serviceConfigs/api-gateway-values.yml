@@ -17,7 +17,9 @@ serviceType: NodePort
 servicePort: 8080
 serviceTargetPort: 454
 
-initialLivenessProbeDelay: 5
+#probes:
+#  path: /
+#  initialLivenessProbeDelay: 5
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious

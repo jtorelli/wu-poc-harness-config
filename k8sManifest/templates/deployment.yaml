@@ -57,15 +57,16 @@ spec:
       - name: {{.Values.name}}
         image: {{.Values.image}}
         imagePullPolicy: Always
-#        livenessProbe:
-#          httpGet:
-#            path: /
-#            port: {{ .Values.serviceTargetPort }}
-#          initialDelaySeconds:  {{ .Values.initialLivenessProbeDelay}}
-#        readinessProbe:
-#          httpGet:
-#            path: /
-#            port: {{ .Values.serviceTargetPort }}
+        {{- if .Values.env.probes}}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.probes.path}}
+            port: {{ .Values.serviceTargetPort }}
+          initialDelaySeconds:  {{ .Values.probes.initialLivenessProbeDelay}}
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.probes.path}}
+            port: {{ .Values.serviceTargetPort }}
         {{- if or .Values.env.config .Values.env.secrets}}
         envFrom:
         {{- if .Values.env.config}}
