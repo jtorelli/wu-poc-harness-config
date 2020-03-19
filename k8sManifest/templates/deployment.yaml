@@ -57,7 +57,7 @@ spec:
       - name: {{.Values.name}}
         image: {{.Values.image}}
         imagePullPolicy: Always
-        {{- if .Values.env.probes}}
+        {{- if .Values.probes}}
         livenessProbe:
           httpGet:
             path: {{ .Values.probes.path }}
