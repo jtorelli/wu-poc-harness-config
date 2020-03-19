@@ -18,7 +18,7 @@ servicePort: 8080
 serviceTargetPort: 8080
 
 probes:
-  path: /
+  path: /health
   initialLivenessProbeDelay: 5
 
 resources:
