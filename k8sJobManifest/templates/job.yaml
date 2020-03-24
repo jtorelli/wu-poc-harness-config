@@ -40,9 +40,6 @@ metadata:
   name: {{.Values.name}}-job
   namespace: {{.Values.namespace}}
 spec:
-  selector:
-    matchLabels:
-      app: {{.Values.name}}
   template:
     metadata:
       labels:
