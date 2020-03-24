@@ -42,6 +42,8 @@ metadata:
 spec:
   template:
     metadata:
+      name: {{.Values.name}}-job
+      namespace: {{.Values.namespace}}
       labels:
         app: {{.Values.name}}-job
     spec:
