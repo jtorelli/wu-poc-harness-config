@@ -47,8 +47,25 @@ spec:
       labels:
         app: {{.Values.name}}-job
     spec:
+      {{- if .Values.dockercfg}}
+      imagePullSecrets:
+      - name: {{.Values.name}}-dockercfg
+      {{- end}}
       containers:
       - name: {{.Values.name}}
         command:
         - ./entryPoint.sh
         image: {{.Values.image}}
+        {{- if or .Values.env.config .Values.env.secrets}}
+        envFrom:
+        {{- if .Values.env.config}}
+        - configMapRef:
+            name: {{.Values.name}}
+        {{- end}}
+        {{- if .Values.env.secrets}}
+        - secretRef:
+            name: {{.Values.name}}
+        {{- end}}
+        {{- end}}
+      restartPolicy: Never
+        
