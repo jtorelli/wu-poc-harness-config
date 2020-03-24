@@ -42,8 +42,8 @@ metadata:
 spec:
   template:
     metadata:
-      labels:
-        app: {{.Values.name}}
+      name: {{.Values.name}}-job
+      namespace: {{.Values.namespace}}
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
