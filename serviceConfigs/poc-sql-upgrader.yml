@@ -7,15 +7,6 @@ dockercfg: ${artifact.source.dockerconfig}
 createNamespace: false
 namespace: poc
 
-probes:
-  path: /
-  initialLivenessProbeDelay: 5
-
-# Service Type allow you to specify what kind of service you want.
-# Possible values for ServiceType are:
-# ClusterIP | NodePort | LoadBalancer | ExternalName
-serviceType: NodePort
-
 # A Service can map an incoming port to any targetPort.
 # targetPort is where application is listening on inside the container.
 servicePort: 8080
@@ -34,8 +25,8 @@ resources:
 
 env:
   config:
-     DB_URL: ${serviceVariable.DB_USER}
-     DB_USER: ${serviceVariable.DB_USER}_
+     DB_URL: ${serviceVariable.DB_URL}
+     DB_USER: ${serviceVariable.DB_USER}
   secrets:
      DB_PASS: ${serviceVariable.DB_PASS}
 
