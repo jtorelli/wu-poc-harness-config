@@ -40,13 +40,9 @@ metadata:
   name: {{.Values.name}}-job
   namespace: {{.Values.namespace}}
 spec:
-  metadata:
-    labels:
-      app: {{.Values.name}}
   template:
     metadata:
-      labels:
-        app: {{.Values.name}}
+      name: {{.Values.name}}
     spec:
       {{- if .Values.dockercfg}}
       imagePullSecrets:
@@ -69,4 +65,3 @@ spec:
         {{- end}}
       restartPolicy: Never
   backoffLimit: 4
-        
