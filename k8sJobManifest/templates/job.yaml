@@ -51,6 +51,8 @@ spec:
       {{- end}}
       containers:
       - name: {{.Values.name}}
+        command:
+        - ./entryPoint.sh
         image: {{.Values.image}}
         imagePullPolicy: Always
         {{- if or .Values.env.config .Values.env.secrets}}
@@ -65,5 +67,4 @@ spec:
         {{- end}}
         {{- end}}
       restartPolicy: Never
-  backoffLimit: 4
         
