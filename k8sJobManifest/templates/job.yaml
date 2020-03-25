@@ -40,6 +40,7 @@ metadata:
   name: {{.Values.name}}-job
   namespace: {{.Values.namespace}}
 spec:
+  ttlSecondsAfterFinished: {{Values.ttlSecondsAfterFinished}}
   template:
     metadata:
       labels:
@@ -64,7 +65,6 @@ spec:
             name: {{.Values.name}}
         {{- end}}
         {{- end}}
-      restartPolicy: Never
-  backoffLimit: 4
+      restartPolicy: Never 
         
         
