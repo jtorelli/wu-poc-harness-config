@@ -40,7 +40,7 @@ metadata:
   name: {{.Values.name}}-job
   namespace: {{.Values.namespace}}
 spec:
-  ttlSecondsAfterFinished: {{Values.ttlSecondsAfterFinished}}
+  ttlSecondsAfterFinished: {{.Values.job.ttlSecondsAfterFinished}}
   template:
     metadata:
       labels:
