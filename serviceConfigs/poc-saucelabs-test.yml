@@ -1,0 +1,43 @@
+name: poc-saucelabs-test
+replicas: 1
+
+image: ${artifact.metadata.image}
+dockercfg: ${artifact.source.dockerconfig}
+
+createNamespace: false
+namespace: poc
+
+# Service Type allow you to specify what kind of service you want.
+# Possible values for ServiceType are:
+# ClusterIP | NodePort | LoadBalancer | ExternalName
+serviceType: NodePort
+
+# A Service can map an incoming port to any targetPort.
+# targetPort is where application is listening on inside the container.
+servicePort: 8080
+serviceTargetPort: 8080
+
+probes:
+  path: /health
+  initialLivenessProbeDelay: 600
+
+job:
+  ttlSecondsAfterFinished: 180
+  
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+    memory: 256Mi
+  requests:
+    cpu: 256m
+    memory: 256Mi
+
+env:
+  config:
+     SAUCE_USERNAME: ${serviceVariable.SAUCE_USERNAME}
+  secrets:
+     SAUCE_ACCESS_KEY: ${serviceVariable.SAUCE_ACCESS_KEY}
+
